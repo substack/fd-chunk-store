@@ -10,6 +10,7 @@ function FS (size, opts) {
   if (!(this instanceof FS)) return new FS(size, opts)
   var self = this
   self.size = size
+  self.chunkLength = size
   if (typeof opts === 'string') opts = { path: opts }
   EventEmitter.call(self)
   self.path = opts.path
