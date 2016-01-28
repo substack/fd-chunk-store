@@ -46,6 +46,10 @@ Get the chunk at index `i` as `cb(err, buf)`.
 Put the chunk in `buf` at chunk offset `i`.
 
 ## store.destroy(cb)
+
+Close the underlying file descriptor and destroy the underlying resource,
+removing the file.
+
 ## store.close(cb)
 
 Close the underlying file descriptor.
