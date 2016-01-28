@@ -63,6 +63,9 @@ FS.prototype.put = ready(function (n, buf, opts, cb) {
   if (buf.length !== this.size) {
     return tick(cb, new Error('invalid chunk length'))
   }
+  if (typeof buf === 'string') buf = Buffer(buf)
+  else if (!Buffer.isBuffer(buf)) buf = Buffer(String(buf))
+
   if (!opts) opts = {}
   if (!cb) cb = noop
   var pos = self.size * n + defined(opts.offset, 0)
