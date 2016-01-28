@@ -74,7 +74,10 @@ FS.prototype.put = ready(function (n, buf, opts, cb) {
 })
 
 FS.prototype.destroy = ready(function (cb) {
-  fs.close(this.fd, cb)
+  var self = this
+  fs.close(self.fd, function () {
+    fs.unlink(self.path, cb)
+  })
 })
 
 FS.prototype.close = ready(function (cb) {
