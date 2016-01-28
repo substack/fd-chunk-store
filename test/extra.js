@@ -27,3 +27,14 @@ test('get() after destroyed', function (t) {
     t.ok(err)
   })
 })
+
+test('put get string', function (t) {
+  t.plan(2)
+  var store = Store(5, file)
+  store.put(0, 'hello', function (err) {
+    t.ifError(err)
+    store.get(0, function (err, buf) {
+      t.deepEqual(buf, new Buffer('hello'))
+    })
+  })
+})
